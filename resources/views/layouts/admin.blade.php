@@ -14,6 +14,10 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    @include('guest.partials.header')
-    @yield('content')
+    @include('admin.partials.header')
+    <body>
+         @yield('content')
+
+    </body>
+
 </html>
