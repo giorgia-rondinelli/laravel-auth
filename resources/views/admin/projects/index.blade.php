@@ -6,6 +6,7 @@
             <thead>
                 <tr>
 
+
                 <th scope="col">Titolo</th>
                 <th scope="col">Linguaggio </th>
                 <th scope="col">Stato</th>
@@ -18,7 +19,8 @@
 
                 <tr>
 
-                <td>{{$project->title}}</td>
+
+                <td> <a href="{{route('admin.projects.show', $project)}}"><i class="fa-solid fa-circle-info"></i> </a>{{$project->title}}</td>
                 <td>{{$project->languages}}</td>
                 @if ($project->status)
                     <td>pubblico</td>
