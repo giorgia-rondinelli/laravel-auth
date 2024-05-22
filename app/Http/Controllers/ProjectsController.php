@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Functions\Helper;
 
 class ProjectsController extends Controller
 {
@@ -22,7 +23,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -30,7 +31,19 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data=$request->all();
+
+        $new_project= new Project();
+        $new_project->fill($form_data);
+
+        $new_project->save();
+
+        return redirect()->route('admin.projects.show',$new_project);
+
+
+
+
+
     }
 
     /**
@@ -44,17 +57,23 @@ class ProjectsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit',compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $form_data=$request->all();
+
+
+        $form_data['slug']=helper::generateSlug($form_data['title'],new Project);
+
+        $project->update($form_data);
+        return redirect()->route('admin.projects.show',compact('project'));
     }
 
     /**
