@@ -19,6 +19,13 @@
     <div>{{$project->languages}}</div>
 
     <button class="btn btn-warning mt-5"><a class="modifica" href="{{route('admin.projects.edit', $project)}}">Modifica</a> </button>
+    <form action="{{route('admin.projects.destroy' ,$project)}}" method="POST">
+        @csrf
+        @method('delete')
+
+        <button type="submit" class="btn btn-danger mt-5">Elimina </button>
+    </form>
+
 
 
 

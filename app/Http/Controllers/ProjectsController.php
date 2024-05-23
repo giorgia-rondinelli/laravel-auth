@@ -23,7 +23,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-
+        return view('admin.projects.create');
     }
 
     /**
@@ -34,6 +34,7 @@ class ProjectsController extends Controller
         $form_data=$request->all();
 
         $new_project= new Project();
+        $form_data['slug']=helper::generateSlug($form_data['title'],new Project);
         $new_project->fill($form_data);
 
         $new_project->save();
@@ -79,8 +80,9 @@ class ProjectsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index');
     }
 }
