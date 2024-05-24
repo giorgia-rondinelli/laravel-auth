@@ -31,3 +31,10 @@
     </form>
 </div>
 @endsection
+
+{{-- funzione per creare preview --}}
+{{-- function showImage(event){
+    const thumb = document.getElementById('thumb');
+    console.log(thumb);
+    thumb.src = URL.createObjectURL(event.target.files[0]);
+  } --}}

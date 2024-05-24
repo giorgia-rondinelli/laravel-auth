@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\TechnologiesController;
+use App\Http\Controllers\TypesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +29,8 @@ Route::middleware(['auth','verified'])
             // qui vengono inserite tutte le rotte delle crud e tutte quelle protette da auth
             Route::get('/',[DashboardController::class ,'index'])->name('home ');
             Route::resource('projects', ProjectsController::class);
+            Route::resource('technology',TechnologiesController::class);
+            Route::resource('type',TypesController::class);
         });
 
 Route::middleware('auth')->group(function () {
